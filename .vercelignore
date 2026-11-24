@@ -1,0 +1,8 @@
+# No subir a Vercel: proyecto del sitio (trae .env) y la página puente (va en zegucom.com.mx)
+zegucom-web-responsivo/
+zegucom-puente/
+# Logo original en alta resolución (la página usa zegucom-logo.webp / .png)
+assets/zegucomlogo.png
+# Generador local de la landing (no se publica)
+herramientas/
+black_friday_zegucom_productos.csv
