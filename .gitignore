@@ -1,6 +1,3 @@
-# Otros proyectos y herramientas locales, ajenos al sitio publicado
-/zegucom-web-responsivo/
-/zegucom-puente/
 /herramientas/
-/black_friday_zegucom_productos.csv
 /assets/zegucomlogo.png
+.gitignore
