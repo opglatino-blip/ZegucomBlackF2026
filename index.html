@@ -38,8 +38,10 @@ h2.display{font-size:clamp(40px,6vw,72px);margin-bottom:28px}
 header{position:sticky;top:0;z-index:20;background:rgba(10,21,35,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;height:64px;gap:28px}
 .logo img{height:34px;width:auto}
-.nav-links{display:flex;gap:26px;margin-left:auto;font-weight:600;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:26px;margin-left:auto;font-weight:600;color:var(--muted)}
 .nav-links a:hover{color:var(--ink)}
+.nav-links a.nav-home{padding:8px 12px;border:1px solid rgba(229,35,45,.55);border-radius:7px;color:#fff}
+.nav-links a.nav-home:hover{background:var(--red);border-color:var(--red)}
 .menu-btn{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:none;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
 .menu-btn span{width:20px;height:2px;border-radius:2px;background:var(--ink);transition:transform .25s,opacity .2s}
 .menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -194,8 +196,15 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
 .hero-title-row{position:relative;display:block;margin:38px 0 18px}
 .hero h1{width:max-content;max-width:100%;font-size:clamp(96px,11vw,156px);line-height:.94;letter-spacing:-.02em;margin:0;padding-top:clamp(100px,8vw,130px);text-shadow:0 8px 48px rgba(0,0,0,.55)}
 .hero h1 .hero-black{position:relative;display:block;width:max-content;margin:0;color:var(--ink);-webkit-text-stroke:0}
+.hero h1 .hero-black-text{position:relative;z-index:2;display:inline-block;color:var(--ink);-webkit-text-fill-color:var(--ink);-webkit-text-stroke:0}
 .hero h1 .hero-friday{display:block;margin-top:.1em;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.9)}
-.hero-mascot{position:absolute;z-index:3;right:-.04em;bottom:calc(100% - 5px);width:clamp(190px,19vw,280px);height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.5));pointer-events:none}
+.hero-mascot-slot{position:absolute;right:-.04em;bottom:calc(100% - 8px);display:block;width:clamp(190px,19vw,280px);aspect-ratio:1754/897;pointer-events:none}
+.hero-mascot-body-slot{z-index:1;filter:drop-shadow(0 10px 18px rgba(0,0,0,.5))}
+.hero-mascot-body-slot{bottom:calc(100% - 14px)}
+.hero-mascot-hands-slot{z-index:3;filter:drop-shadow(0 5px 7px rgba(0,0,0,.4))}
+.hero-mascot-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.hero-mascot-body{transform-origin:50% 100%;animation:mascot-bob 2.25s ease-in-out infinite}
+@keyframes mascot-bob{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(-6px) scaleY(1.025)}}
 .countdown{display:flex;align-items:stretch;gap:8px;margin:0 0 22px}
 .cd{width:68px;padding:9px 0;text-align:center;border:1px solid rgba(255,255,255,.12);border-radius:9px;background:rgba(17,23,32,.86);backdrop-filter:blur(8px)}
 .cd b{display:block;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:32px;line-height:1;color:#fff}
@@ -203,16 +212,20 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
 .countdown-ended{display:inline-flex;align-items:center;padding:10px 14px;border-radius:9px;background:rgba(229,35,45,.14);border:1px solid rgba(229,35,45,.55);color:#ff737a;font-weight:800}
 .hero-lead{max-width:440px;color:#c0c7d1;font-size:clamp(16px,2vw,19px);line-height:1.6;margin-bottom:27px}
 .hero .btn{min-height:52px;border-radius:8px;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 8px 26px rgba(229,35,45,.24)}
+.hero .btn-zegucom{background:rgba(14,19,27,.75);border:1px solid rgba(255,255,255,.32);color:#fff;box-shadow:none}
+.hero .btn-zegucom:hover{background:#171e28;border-color:#fff}
 .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .hero-note{display:inline-flex;align-items:center;gap:9px;color:#c0c7d1;font-size:13px;max-width:280px;white-space:normal}
 .hero-note::before{content:"";width:7px;height:7px;border-radius:50%;background:#ffcf40;box-shadow:0 0 12px #ffcf40}
 .deal{background:linear-gradient(130deg,#141a23,#0e1218);border-color:#2d3540;border-radius:20px;box-shadow:0 20px 70px rgba(0,0,0,.24)}
 .deal-img{background:radial-gradient(ellipse at 50% 40%,#1d2734,#0b0f14 72%);min-height:380px}
 .deal-img img{width:96%;max-width:500px;max-height:370px;object-fit:contain;filter:drop-shadow(0 16px 32px rgba(0,0,0,.55))}
-.deal-tag{background:var(--red);color:#fff;border-radius:5px;text-transform:uppercase;letter-spacing:.06em}
+.deal-tag{z-index:2;background:var(--red);color:#fff;border-radius:5px;text-transform:uppercase;letter-spacing:.06em}
 .deal-info h3{letter-spacing:.01em}
 .deal-info .btn{border-radius:7px;text-transform:uppercase;letter-spacing:.04em}
-#ofertas{position:relative}
+#ofertas{position:relative;isolation:isolate;background-color:var(--bg)}
+#ofertas::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(180deg,rgba(8,11,16,.42) 0%,rgba(8,11,16,.66) 26%,rgba(8,11,16,.9) 62%,var(--bg) 100%),url("assets/black-friday-products-bg.png");background-repeat:no-repeat;background-position:center,center top;background-size:100% 100%,100% auto}
+#ofertas>.wrap{position:relative;z-index:1}
 #ofertas h2.display{font-size:clamp(42px,6vw,70px);margin-bottom:8px}
 .section-lead{color:var(--muted);font-size:16px;margin-bottom:24px}
 .filters{gap:9px}
@@ -226,6 +239,7 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
 .card:hover::after{opacity:1}
 .art{background:radial-gradient(ellipse at 50% 46%,#fff 0%,#f1f2f4 72%,#dfe2e7 100%);border:1px solid rgba(255,255,255,.09);border-radius:10px;aspect-ratio:1.08;margin-bottom:15px}
 .art img{width:82%;height:82%;transition:transform .25s}
+.card .art img[src*="XSAMGA2B"],.card .art img[src*="XSAMGA2WB"]{width:68%;height:68%}
 .card:hover .art img{transform:scale(1.05)}
 .brand{color:#a8b2bf}
 .card h3{font-size:16px;min-height:2.5em}
@@ -233,6 +247,7 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
 .build{border:1px solid rgba(255,255,255,.1);border-radius:18px;background:linear-gradient(110deg,#e5232d,#981923 48%,#151b25 100%)}
 .ask{border-radius:18px;background:linear-gradient(130deg,#121923,#0d1117);border-color:#2a333e}
 .blogo{background:#111720;border-color:#2a333e;opacity:.9}
+.brands-note{margin-top:14px;color:var(--muted);font-size:14px;font-weight:700;text-align:center}
 .setup-picks{padding-top:6px}
 .setup-picks h2{font-size:clamp(32px,4vw,48px);margin:0 0 22px}
 .pick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -258,9 +273,9 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
  .hero::after{background:linear-gradient(90deg,rgba(8,11,16,.55),transparent 100%)}
  .hero-content{padding:0 16px}.hero-copy{max-width:520px}
  .hero-title-row{margin:clamp(112px,27vw,146px) 0 17px;text-align:center}
- .hero h1{width:100%;font-size:clamp(82px,25vw,142px);padding-top:clamp(82px,26vw,128px);line-height:.92}
+ .hero h1{width:100%;font-size:clamp(88px,28vw,154px);padding-top:clamp(82px,26vw,128px);line-height:.92}
  .hero h1 .hero-black{margin-inline:auto}
- .hero-mascot{right:50%;transform:translateX(50%);width:clamp(170px,48vw,290px)}
+ .hero-mascot-slot{right:50%;transform:translateX(50%);width:clamp(185px,56vw,320px)}
  .countdown{justify-content:center;gap:6px;margin-bottom:20px}
  .cd{width:clamp(52px,16vw,68px);padding:8px 0}
  .cd b{font-size:clamp(26px,8vw,32px)}
@@ -282,7 +297,7 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
  .hero .btn{width:auto}
  .hero-note{display:flex;margin:0;max-width:100%;font-size:12px}
 }
-@media(max-width:380px){.hero h1{font-size:clamp(78px,25vw,94px);padding-top:clamp(82px,27vw,108px)}.hero-mascot{width:clamp(160px,50vw,205px)}.hero-note{font-size:12px}.card h3{font-size:13px}}
+@media(max-width:380px){.hero h1{font-size:clamp(88px,28vw,108px);padding-top:clamp(82px,27vw,108px)}.hero-mascot-slot{width:clamp(180px,56vw,220px)}.hero-note{font-size:12px}.card h3{font-size:13px}}
 </style>
 </head>
 <body>
@@ -299,6 +314,7 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
       <a href="#ofertas">Ofertas</a>
       <a href="#arma-pc">Arma tu PC</a>
       <a href="#marcas">Marcas</a>
+      <a class="nav-home" href="https://www.zegucom.com.mx/" target="_blank" rel="noopener">Ir a Zegucom ↗</a>
     </nav>
     <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
   </div>
@@ -306,13 +322,14 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
     <a href="#ofertas">Ofertas</a>
     <a href="#arma-pc">Arma tu PC</a>
     <a href="#marcas">Marcas</a>
+    <a href="https://www.zegucom.com.mx/" target="_blank" rel="noopener">Ir a Zegucom ↗</a>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-content"><div class="hero-copy">
     <div class="date"><i></i> 27 — 29 NOVIEMBRE · 2026</div>
-    <div class="hero-title-row"><h1 class="display"><span class="hero-black">Black<img class="hero-mascot" src="assets/black-friday-hanging-mascot.webp" alt="" width="1752" height="897" fetchpriority="high"></span><span class="hero-friday">Friday</span></h1></div>
+    <div class="hero-title-row"><h1 class="display"><span class="hero-black"><span class="hero-mascot-slot hero-mascot-body-slot" aria-hidden="true"><img class="hero-mascot-image hero-mascot-body" src="assets/black-friday-zumi-body.png" alt="" width="1754" height="897" fetchpriority="high"></span><span class="hero-black-text">Black</span><span class="hero-mascot-slot hero-mascot-hands-slot" aria-hidden="true"><img class="hero-mascot-image" src="assets/black-friday-zumi-hands.png" alt="" width="1754" height="897"></span></span><span class="hero-friday">Friday</span></h1></div>
     <div class="countdown" id="countdown" aria-label="Tiempo restante para el fin de la oferta" aria-live="polite">
       <div class="cd"><b id="cd-d">00</b><small>DÍAS</small></div>
       <div class="cd"><b id="cd-h">00</b><small>HRS</small></div>
@@ -320,7 +337,7 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
       <div class="cd"><b id="cd-s">00</b><small>SEG</small></div>
     </div>
     <p class="hero-lead">Sube de nivel tu setup. Tres días para encontrar tecnología, gaming y componentes al precio que estabas esperando.</p>
-    <div class="hero-actions"><a class="btn btn-red" href="#ofertas">Explorar ofertas</a><span class="hero-note">Envíos a todo México</span></div>
+    <div class="hero-actions"><a class="btn btn-red" href="#ofertas">Explorar ofertas</a><a class="btn btn-zegucom" href="https://www.zegucom.com.mx/" target="_blank" rel="noopener">Ir a Zegucom ↗</a><span class="hero-note">Envíos a todo México</span></div>
   </div></div>
 </section>
 
@@ -557,6 +574,7 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
       <div class="blogo"><img src="assets/marcas/gigabyte.webp" alt="GIGABYTE" loading="lazy"></div>
       <div class="blogo btext">Vorago</div>
     </div>
+    <p class="brands-note">Entre muchas más</p>
   </div>
 </section>
 
