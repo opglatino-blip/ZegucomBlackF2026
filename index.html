@@ -30,7 +30,7 @@ h2.display{font-size:clamp(40px,6vw,72px);margin-bottom:28px}
 
 /* Cintillo */
 .ticker{background:var(--red);font-weight:800;font-size:13px;letter-spacing:.06em;overflow:hidden;white-space:nowrap}
-.ticker div{display:inline-flex;gap:40px;padding:9px 0;animation:tick 26s linear infinite}
+.ticker div{display:inline-flex;gap:40px;padding:9px 0;animation:tick 38s linear infinite}
 .ticker span::after{content:"✦";margin-left:40px}
 @keyframes tick{to{transform:translateX(-50%)}}
 
@@ -206,6 +206,7 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
 .hero-mascot-body{transform-origin:50% 100%;animation:mascot-bob 2.25s ease-in-out infinite}
 @keyframes mascot-bob{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(-6px) scaleY(1.025)}}
 .countdown{display:flex;align-items:stretch;gap:8px;margin:0 0 22px}
+.countdown-label{margin:0 0 8px;color:#ff353f;font-size:24px;font-weight:800;letter-spacing:.03em}
 .cd{width:68px;padding:9px 0;text-align:center;border:1px solid rgba(255,255,255,.12);border-radius:9px;background:rgba(17,23,32,.86);backdrop-filter:blur(8px)}
 .cd b{display:block;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:32px;line-height:1;color:#fff}
 .cd small{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
@@ -217,6 +218,14 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
 .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .hero-note{display:inline-flex;align-items:center;gap:9px;color:#c0c7d1;font-size:13px;max-width:280px;white-space:normal}
 .hero-note::before{content:"";width:7px;height:7px;border-radius:50%;background:#ffcf40;box-shadow:0 0 12px #ffcf40}
+.promo-highlights{position:relative;z-index:2;padding:0 0 22px}
+.promo-grid{display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border:1px solid rgba(255,255,255,.13);border-radius:14px;background:linear-gradient(105deg,#e5232d 0%,#bf1223 46%,#701919 100%);box-shadow:0 14px 34px rgba(0,0,0,.28)}
+.promo-item{display:flex;align-items:center;gap:15px;min-height:82px;padding:16px 24px}
+.promo-item+.promo-item{border-left:1px solid rgba(255,255,255,.2)}
+.promo-symbol{flex:0 0 42px;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.5);border-radius:10px;color:#fff;font-family:Anton,Impact,sans-serif;font-size:26px;line-height:1}
+.promo-symbol svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.promo-copy small{display:block;margin-bottom:3px;color:rgb(253, 253, 253);font-size:15px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.promo-copy strong{display:block;color:#fff;font-size:clamp(14px,1.5vw,18px);line-height:1.25}
 .deal{background:linear-gradient(130deg,#141a23,#0e1218);border-color:#2d3540;border-radius:20px;box-shadow:0 20px 70px rgba(0,0,0,.24)}
 .deal-img{background:radial-gradient(ellipse at 50% 40%,#1d2734,#0b0f14 72%);min-height:380px}
 .deal-img img{width:96%;max-width:500px;max-height:370px;object-fit:contain;filter:drop-shadow(0 16px 32px rgba(0,0,0,.55))}
@@ -276,11 +285,17 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
  .hero h1{width:100%;font-size:clamp(88px,28vw,154px);padding-top:clamp(82px,26vw,128px);line-height:.92}
  .hero h1 .hero-black{margin-inline:auto}
  .hero-mascot-slot{right:50%;transform:translateX(50%);width:clamp(185px,56vw,320px)}
+ .countdown-label{text-align:center}
  .countdown{justify-content:center;gap:6px;margin-bottom:20px}
  .cd{width:clamp(52px,16vw,68px);padding:8px 0}
  .cd b{font-size:clamp(26px,8vw,32px)}
  .hero-lead{font-size:16px;max-width:350px;margin-bottom:20px}
  .hero .btn{width:auto;padding:14px 20px}.hero-note{margin:12px 0 0;display:flex}
+ .promo-highlights{padding:0 0 18px}
+ .promo-grid{grid-template-columns:1fr}
+ .promo-item{min-height:72px;padding:13px 16px}
+ .promo-item+.promo-item{border-left:0;border-top:1px solid rgba(255,255,255,.2)}
+ .promo-symbol{flex-basis:38px;width:38px;height:38px}
  .deal-img{min-height:260px}
  .grid{gap:10px}.art{aspect-ratio:.95}
  .card h3{font-size:14px}.more{font-size:11px}
@@ -303,8 +318,8 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
 <body>
 
 <div class="ticker" aria-hidden="true"><div>
-  <span>BLACK FRIDAY</span><span>27 al 29 NOV</span><span>PREGUNTA POR NUESTROS DESCUENTOS</span><span>ENVÍO A TODO MÉXICO</span>
-  <span>BLACK FRIDAY</span><span>27 al 29 NOV</span><span>PREGUNTA POR NUESTROS DESCUENTOS</span><span>ENVÍO A TODO MÉXICO</span>
+  <span>BLACK FRIDAY</span><span>27 al 29 NOV</span><span>PRECIOS ESPECIALES EN TODA LA TIENDA</span><span>PREGUNTA POR NUESTROS DESCUENTOS</span><span>ENVÍO GRATIS EN PEDIDOS MAYORES A $1,499</span>
+  <span>BLACK FRIDAY</span><span>27 al 29 NOV</span><span>PRECIOS ESPECIALES EN TODA LA TIENDA</span><span>PREGUNTA POR NUESTROS DESCUENTOS</span><span>ENVÍO GRATIS EN PEDIDOS MAYORES A $1,499</span>
 </div></div>
 
 <header>
@@ -330,15 +345,25 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
   <div class="hero-content"><div class="hero-copy">
     <div class="date"><i></i> 27 al 29 NOVIEMBRE · 2026</div>
     <div class="hero-title-row"><h1 class="display"><span class="hero-black"><span class="hero-mascot-slot hero-mascot-body-slot" aria-hidden="true"><img class="hero-mascot-image hero-mascot-body" src="assets/black-friday-zumi-body.png" alt="" width="1754" height="897" fetchpriority="high"></span><span class="hero-black-text">Black</span><span class="hero-mascot-slot hero-mascot-hands-slot" aria-hidden="true"><img class="hero-mascot-image" src="assets/black-friday-zumi-hands.png" alt="" width="1754" height="897"></span></span><span class="hero-friday">Friday</span></h1></div>
+    <p class="countdown-label" id="countdownLabel">Terminan las ofertas en:</p>
     <div class="countdown" id="countdown" aria-label="Tiempo restante para el fin de la oferta" aria-live="polite">
       <div class="cd"><b id="cd-d">00</b><small>DÍAS</small></div>
       <div class="cd"><b id="cd-h">00</b><small>HRS</small></div>
       <div class="cd"><b id="cd-m">00</b><small>MIN</small></div>
       <div class="cd"><b id="cd-s">00</b><small>SEG</small></div>
     </div>
-    <p class="hero-lead">Sube de nivel tu setup. Tres días para encontrar tecnología, gaming y componentes al precio que estabas esperando.</p>
-    <div class="hero-actions"><a class="btn btn-red" href="#ofertas">Explorar ofertas</a><a class="btn btn-zegucom" href="https://www.zegucom.com.mx/" target="_blank" rel="noopener">Ir a Zegucom ↗</a><span class="hero-note">Envíos a todo México</span></div>
+    <div class="hero-actions"><a class="btn btn-red" href="#ofertas">Explorar ofertas</a><a class="btn btn-zegucom" href="https://www.zegucom.com.mx/" target="_blank" rel="noopener">Ir a Zegucom ↗</a></div>
   </div></div>
+</section>
+
+<section class="promo-highlights" aria-label="Promociones de Black Friday">
+  <div class="wrap">
+    <div class="promo-grid">
+      <div class="promo-item"><span class="promo-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="18" cy="18" r="1.5"/></svg></span><div class="promo-copy"><small>Envío gratis</small><strong>En pedidos mayores a $1,499</strong></div></div>
+
+      <div class="promo-item"><span class="promo-symbol" aria-hidden="true">%</span><div class="promo-copy"><small>Black Friday</small><strong>Precios especiales en toda la tienda</strong></div></div>
+    </div>
+  </div>
 </section>
 
 <section class="setup-picks">
@@ -643,12 +668,14 @@ header{background:rgba(8,11,16,.88);border-bottom-color:rgba(255,255,255,.09)}
 // Cuenta regresiva: cierre del 29 de noviembre de 2026 en horario del centro de México
 (function(){
   const box = document.getElementById('countdown');
+  const label = document.getElementById('countdownLabel');
   const end = new Date('2026-11-29T23:59:59-06:00').getTime();
   const ids = ['cd-d','cd-h','cd-m','cd-s'].map(id => document.getElementById(id));
   const pad = n => String(n).padStart(2,'0');
   function tick(){
     const remaining = end - Date.now();
     if (remaining <= 0) {
+      label.hidden = true;
       box.innerHTML = '<p class="countdown-ended">Esta oferta terminó</p>';
       return false;
     }
